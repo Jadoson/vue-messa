@@ -29,25 +29,21 @@ export default {
     }
   },
   created() {
-    // Загружаем данные из импортированного JSON
     this.messages = feedData
     this.displayedMessages = this.messages.slice(0, this.perPage)
   },
   methods: {
     coloredContent(content, tones) {
-      let parts = [] // Массив для хранения частей с раскраской
+      let parts = []
       let lastIndex = 0
 
       tones.forEach(({ position, tone, length }) => {
-        // Добавляем текст до раскрашиваемого участка
         if (position > lastIndex) {
           parts.push(`<span>${content.slice(lastIndex, position)}</span>`)
         }
 
-        // Получаем цвет на основе тональности
         const color = this.getColor(tone)
 
-        // Добавляем раскрашенную часть текста
         parts.push(
           `<span style="background-color:${color}">${content.slice(
             position,
@@ -55,27 +51,23 @@ export default {
           )}</span>`
         )
 
-        // Обновляем индекс последней позиции
         lastIndex = position + length
       })
 
-      // Добавляем оставшуюся часть текста, если она есть
       if (lastIndex < content.length) {
         parts.push(`<span>${content.slice(lastIndex)}</span>`)
       }
 
-      // Возвращаем все части как единый HTML
       return parts.join('')
     },
 
     getColor(tone) {
-      // Возвращаем градиент от красного (-1) к зеленому (1)
       if (tone === 1) return 'green'
       if (tone === 0) return 'yellow'
       if (tone === -1) return 'red'
       const red = Math.round((1 - tone) * 255)
       const green = Math.round((1 + tone) * 255)
-      return `rgb(${red}, ${green}, 0)` // Градиент
+      return `rgb(${red}, ${green}, 0)`
     },
 
     applyColor(content, start, length, color) {
