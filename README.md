@@ -1,4 +1,4 @@
-# Vue Message Feed
+# Message Feed
 
 ### Описание
 
