@@ -39,7 +39,7 @@
    http://localhost:8080
 
 ### Структура проекта
-
+hgg
 - **src/assets/feed.json** — JSON-файл с сообщениями.
 - **src/components/MessageFeed.vue** — Основной компонент для отображения ленты сообщений.
 - **public/** — Папка для статических ресурсов.
